@@ -13,6 +13,6 @@ function addItem(item) {
 module.exports = {
     basket,
     addItem,
-    listItems,
-    empty,
+    // listItems,
+    // empty,
 };
