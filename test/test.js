@@ -31,6 +31,10 @@ let originalBasket;
  * Put all tests within this describe.
  */
 describe('Automated tests', function () {
+    /**
+     * We need to modify the the basket for tests. Make a copy of
+     * the original and set it back after the tests are run.
+     */
     before(function () {
         // runs once before the first test in this block
         let { basket } = testItems;
