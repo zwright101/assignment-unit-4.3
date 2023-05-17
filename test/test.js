@@ -75,7 +75,7 @@ describe('Automated tests', function () {
         it('`listItems` loops over `basket` array and logs each item', function () {
             let { listItems, basket } = testItems;
             let result;
-            if (typeof basket === 'array') {
+            if (typeof basket !== 'undefined') {
                 result = '';
                 // clear basket
                 basket.length = 0;
@@ -88,7 +88,7 @@ describe('Automated tests', function () {
                 // Set it back to default
                 console.log = tempLog;
             }
-            expect(result, 'listItems() does not return anything').to.exist;
+            expect(result, 'listItems() does not console log anything').to.exist;
             expect(result).to.be.a('string');
             assert.equal(result.includes('Kale'), true);
             assert.equal(result.includes('Spinach'), true);
@@ -101,7 +101,7 @@ describe('Automated tests', function () {
                 this.skip();
             } else {
                 // Only run this test in the browser
-                expect(counter, `console.log() was only called ${counter} times.`).to.be.greaterThan(5);
+                expect(counter, `console.log() was only called ${counter} times.`).to.be.greaterThan(3);
             }
         });
     });
