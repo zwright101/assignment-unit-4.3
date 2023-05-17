@@ -13,9 +13,6 @@ console.log('***** Cart Functions *****');
 
 
 
-
-
-
 // DO NOT MODIFY
 // Used for automated testing
 try {
