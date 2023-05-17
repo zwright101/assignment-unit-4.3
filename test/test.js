@@ -74,16 +74,20 @@ describe('Automated tests', function () {
     describe('`listItems` loops over `basket` array and logs each item', function () {
         it('`listItems` loops over `basket` array and logs each item', function () {
             let { listItems, basket } = testItems;
-            // clear basket
-            basket.length = 0;
-            basket.push('Kale', 'Spinach');
-            let tempLog = console.log;
-            let result = '';
-            // Temporarily override console.log
-            console.log = (item) => result += item;
-            listItems(basket);
-            // Set it back to default
-            console.log = tempLog;
+            let result;
+            if (typeof basket === 'array') {
+                result = '';
+                // clear basket
+                basket.length = 0;
+                basket.push('Kale', 'Spinach');
+                let tempLog = console.log;
+                
+                // Temporarily override console.log
+                console.log = (item) => result += item;
+                listItems(basket);
+                // Set it back to default
+                console.log = tempLog;
+            }
             expect(result, 'listItems() does not return anything').to.exist;
             expect(result).to.be.a('string');
             assert.equal(result.includes('Kale'), true);
@@ -92,7 +96,7 @@ describe('Automated tests', function () {
     });
     describe(`Functions are tested using console.log()`, function () {
         it(`Functions are tested using console.log()`, function () {
-            if (counter === undefined) {
+            if (typeof counter === 'undefined') {
                 // Skip this test if running on the server
                 this.skip();
             } else {
